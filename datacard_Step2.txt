@@ -1,0 +1,29 @@
+imax 2  number of channels
+jmax 3  number of backgrounds
+kmax *  number of nuisance parameters
+
+
+
+shapes * * Step1_onlyMC.root $CHANNEL/$PROCESS/nominal 
+
+bin         M3        noCut_ChIso
+observation -1     -1
+
+bin                      M3           M3          M3           M3        noCut_ChIso   noCut_ChIso   noCut_ChIso  noCut_ChIso
+process                  TTGamma      TTbar       VGamma       Other     TTGamma       TTbar         VGamma        Other
+process                  0            1             2          3         0             1             2          3
+rate                    -1           -1            -1         -1         -1           -1            -1         -1
+---------------------------------------------------------------------------------------------------------------
+# Normal uncertainties in the signal region
+
+#VGamma_norm  lnN         -           1.1             -         -        -           1.1         -         -
+#TTbar_norm   lnN         -           -               1.2       -        -            -          1.2       -
+#Others_norm lnN          -           -                -       1.2
+--------------------------------------------------------
+
+VGamma_norm  rateParam  *  VGamma  1
+VGamma_norm param 1.0 0.1
+TTbar_norm rateParam *   TTbar  1
+TTbar_norm param 1.0 0.2
+Others_norm rateParam *  Other  1
+
