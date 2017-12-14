@@ -1,0 +1,35 @@
+imax 2  number of channels
+jmax *  number of backgrounds
+kmax *  number of nuisance parameters
+
+
+
+shapes * * Step3b_onlyMC.root $CHANNEL/$PROCESS/nominal 
+
+bin            ChHad     M3  
+observation     -1       -1          
+
+bin  ChHad ChHad ChHad ChHad ChHad ChHad ChHad ChHad M3 M3 M3 M3 M3 M3 M3 M3
+    
+    
+
+process  TTGamma_Prompt TTbar_Prompt VGamma_Prompt Other_Prompt TTGamma_NonPrompt TTbar_NonPrompt VGamma_NonPrompt Other_NonPrompt TTGamma_Prompt TTbar_Prompt VGamma_Prompt Other_Prompt TTGamma_NonPrompt TTbar_NonPrompt VGamma_NonPrompt Other_NonPrompt
+process   0   1   2   3   0   1   2   3   0   1   2   3    0    1    2    3 
+rate      -1      -1     -1     -1     -1     -1    -1     -1     -1     -1    -1    -1     -1     -1     -1    -1 
+
+
+---------------------------------------------------------------------------------------------------------------
+# Normal uncertainties in the signal region
+
+
+
+--------------------------------------------------------
+
+VGamma_norm  rateParam  *  VGamma*  1
+VGamma_norm param 1.0 0.2
+TTbar_norm rateParam *   TTbar*  1
+TTbar_norm param 1.0 0.2
+Others_norm rateParam *  Other*  1
+Others_norm param 1.0 0.2
+JetSF_norm rateParam * *NonPrompt 1
+~

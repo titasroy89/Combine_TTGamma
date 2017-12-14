@@ -53,13 +53,13 @@ def makePseudoData(HistDict,processList,processScales = None):
 
 HistDict = makePseudoData(HistDict,process)
 
-outputFile = TFile("Step1a_onlyMC.root","recreate")
+outputFile = TFile("Step1_onlyMC.root","recreate")
 
 for c in list(channels)[:1]:
-        outputFile.mkdir(c)
+        outputFile.mkdir(channels[c][0])
         for p in process+["data_obs"]:
-                outputFile.mkdir("%s/%s"%(c,p))
-                outputFile.cd("%s/%s"%(c,p))
+                outputFile.mkdir("%s/%s"%(channels[c][0],p))
+                outputFile.cd("%s/%s"%(channels[c][0],p))
                 HistDict[c][p].Write("nominal")
 
 

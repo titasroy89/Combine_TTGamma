@@ -4,7 +4,7 @@ kmax *  number of nuisance parameters
 
 
 
-shapes * * Step1_onlyMC.root $CHANNEL/$PROCESS/nominal 
+shapes * * Step2_onlyMC.root $CHANNEL/$PROCESS/nominal 
 
 bin         M3        noCut_ChIso
 observation -1     -1
