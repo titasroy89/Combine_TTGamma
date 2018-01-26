@@ -1,0 +1,27 @@
+imax 1  number of channels
+jmax *  number of backgrounds
+kmax *  number of nuisance parameters
+
+
+
+shapes * * EGamma_CR3.root $CHANNEL/$PROCESS/nominal 
+
+bin         EGamma
+observation     -1               
+
+bin                      EGamma          EGamma     
+process                  Signal          Bkg 
+process                  0                1            
+rate                    -1               -1      
+---------------------------------------------------------------------------------------------------------------
+# Normal uncertainties in the signal region
+
+#VGamma_norm  lnN         -           1.1             -         -        -           1.1         -         -
+#TTbar_norm   lnN         -           -               1.2       -        -            -          1.2       -
+#Others_norm lnN          -           -                -       1.2
+--------------------------------------------------------
+
+
+Others_norm rateParam *  Other  1
+Others_norm param 1.0 0.1
+MisIDEle rateParam *  *  1
