@@ -4,7 +4,7 @@ kmax *  number of nuisance parameters
 
 
 
-shapes * *  Step6c_Syst_onlyMC_trial.root $CHANNEL/$PROCESS/nominal  
+shapes * *  Combine_withDDTemplate.root $CHANNEL/$PROCESS/nominal $CHANNEL/$PROCESS/$SYSTEMATIC 
 bin            ChHad     M3   M3_control
 observation     -1       -1      -1
 
@@ -13,7 +13,7 @@ bin  ChHad ChHad ChHad ChHad ChHad ChHad ChHad ChHad ChHad ChHad ChHad   M3 M3 M
     
 
 process  TTGamma_Prompt TTbar_Prompt VGamma_Prompt Other_Prompt SingleTop_Prompt TTGamma_NonPrompt TTbar_NonPrompt VGamma_NonPrompt Other_NonPrompt SingleTop_NonPrompt VJets_NonPrompt TTGamma_Prompt TTbar_Prompt VGamma_Prompt Other_Prompt SingleTop_Prompt  TTGamma_NonPrompt TTbar_NonPrompt VGamma_NonPrompt Other_NonPrompt SingleTop_NonPrompt VJets_NonPrompt  TTGamma TTbar   VGamma  Other SingleTop VJets
-process   0   1   2   3  4    0   1   2   3  4  5    0   1   2   3  4   0    1   2    3  4  5    0   1   2   3  4  5   
+process   0   1   2   3   4    0   1   2   3  4  5    0   1   2   3  4   0    1   2    3  4  5    0   1   2   3  4  5   
 rate     -1   -1  -1  -1  -1  -1  -1  -1  -1  -1  -1  -1  -1  -1   -1  -1   -1  -1   -1  -1  -1 -1 -1 -1 -1 -1 -1 -1 
 
 
@@ -23,21 +23,30 @@ lumi    lnN    1.025 1.025 1.025 1.025  1.025 1.025 1.025 1.025 1.025 1.025 1.02
 
 
 --------------------------------------------------------
-#Pileup  shape       1  1  1  1  1  1  1  1  1   1  1  1  1  1  1  1  1  1  1  1   1  1  1  1  1  1  1  1
-#BTagSF  shape       1  1  1  1  1  1  1  1  1   1  1  1  1  1  1  1  1  1  1  1   1  1  1  1  1  1  1  1
-#MuEff  shape       1  1  1  1  1  1  1  1  1   1  1  1  1  1  1  1  1  1  1  1   1  1  1  1  1  1  1  1
-#JEC     shape       1  1  1  1  1  1  1  1  1   1  1  1  1  1  1  1  1  1  1  1   1  1  1  1  1  1  1  1
-#JER    shape        1  1  1  1  1  1  1  1  1   1  1  1  1  1  1  1  1  1  1  1   1  1  1  1  1  1  1  1
-#pho    shape        1  1  1  1  1  1  1  1  1   1  1  1  1  1  1  1  1  1  1  1   1  1  1  1  1  1  1  1
+Pileup  shape       1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  1
+BTagSF  shape       1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  1
+MuEff  shape        1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  1
+#JEC     shape       1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  1
+JER    shape        1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  1
+phosmear    shape       1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  1
+phoscale    shape       1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  1
+elesmear    shape       1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  1
+elescale    shape       1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  1
+Q2    shape       1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  1
+#Pdf    shape       1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  -  -  -  -  -  -  1  1  1  1  1  1
 VGamma_norm  rateParam  *  VGamma*  1
-VGamma_norm param 1.0 0.1
+VGamma_norm param 1.0 0.02
 TTbar_norm rateParam *   TTbar* 1 
-TTbar_norm param 1 0.1
+TTbar_norm param 1 0.55
 Others_norm rateParam *  Other*  1
-Others_norm param 1.0 0.1
+Others_norm param 1.0 0.02
 SingleTop_norm rateParam *  SingleTop*  1
-SingleTop_norm param 1.0 0.1
+SingleTop_norm param 1.0 0.02
 VJets_norm rateParam * VJets*  1
-VJets_norm param 1.0 0.1
+VJets_norm param 1.0 0.02
 Hadronic_norm rateParam * *NonPrompt 1
+#* autoMCStats 0
+#mc_unc = prop_binM3_bin*
+~
+~
 ~
