@@ -1,0 +1,53 @@
+imax 3  number of channels
+jmax *  number of backgrounds
+kmax *  number of nuisance parameters
+
+
+
+shapes * *  Combine_withDDTemplate_v2_mu_tight.root $CHANNEL/$PROCESS/nominal $CHANNEL/$PROCESS/$SYSTEMATIC 
+bin            ChHad     M3   M3_control
+observation     -1       -1      -1
+
+bin  ChHad ChHad ChHad ChHad ChHad ChHad ChHad ChHad ChHad    M3 M3 M3 M3 M3 M3 M3 M3 M3    M3_control M3_control M3_control M3_control M3_control 
+    
+    
+
+process  TTGamma_Prompt TTbar_Prompt VGamma_Prompt Other_Prompt TTGamma_DD TTbar_DD VGamma_DD Other_DD VJets_DD TTGamma_Prompt TTbar_Prompt VGamma_Prompt Other_Prompt TTGamma_NonPrompt TTbar_NonPrompt VGamma_NonPrompt Other_NonPrompt VJets_NonPrompt  TTGamma TTbar   VGamma  Other VJets
+process   0    1   2   3       0   1   2   3   4       0   1   2    3       0    1    2    3   4       0   1   2   3  4     
+rate     -1   -1  -1  -1      -1  -1  -1  -1  -1      -1  -1  -1   -1      -1   -1   -1   -1  -1      -1  -1  -1  -1 -1  
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Normal uncertainties in the signal region
+lumi    lnN    1.025 1.025 1.025 1.025   - - - - -  1.025  1.025 1.025 1.025 1.025 1.025 1.025 1.025 1.025  1.025 1.025 1.025 1.025 1.025 
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PU        shape  1  1  1  1    0  0  0  0  0     1  1  1  1  1  1  1  1  0  1  1  1  1  1    
+BTagSF    shape  1  1  1  1    0  0  0  0  0     1  1  1  1  1  1  1  1  0  1  1  1  1  1    
+MuEff     shape  1  1  1  1    0  0  0  0  0     1  1  1  1  1  1  1  1  0  1  1  1  1  1      
+PhoEff    shape  1  1  1  1    0  0  0  0  0     1  1  1  1  1  1  1  1  0  1  1  1  1  1      
+JER       shape  1  1  1  1    0  0  0  0  0     1  1  1  1  1  1  1  1  0  1  1  1  1  1      
+phosmear  shape  1  1  1  1    0  0  0  0  0     1  1  1  1  1  1  1  1  0  1  1  1  1  1      
+phoscale  shape  1  1  1  1    0  0  0  0  0     1  1  1  1  1  1  1  1  0  1  1  1  1  1      
+Q2        shape  1  1  0  0    0  0  0  0  0     1  1  0  0  1  1  0  0  0  1  1  0  0  0  
+#Pdf       shape  1  1  0  0    0  0  0  0  0     1  1  0  0  1  1  0  0  0  1  1  0  0  0  
+JECTotal  shape  1  1  1  1    0  0  0  0  0     1  1  1  1  1  1  1  1  0  1  1  1  1  1   
+isr       shape  1  0  0  0    0  0  0  0  0     1  0  0  0  1  0  0  0  0  1  0  0  0  0  
+fsr       shape  1  0  0  0    0  0  0  0  0     1  0  0  0  1  0  0  0  0  1  0  0  0  0  
+shapeDD   shape  0  0  0  0    1  1  1  1  1     0  0  0  0  0  0  0  0  0  0  0  0  0  0
+
+VGamma_norm  rateParam  *  VGamma*  1
+VGamma_norm param 1.0 0.02
+TTbar_norm rateParam *   TTbar* 1 
+TTbar_norm param 1 0.055
+Others_norm rateParam *  Other*  1
+Others_norm param 1.0 0.02
+VJets_norm rateParam * VJets*  1
+VJets_norm param 1.0 0.02
+Hadronic_norm rateParam * *NonPrompt 1
+#* autoMCStats 0
+#mc_unc = prop_binM3_bin*
+~
+~
+~
