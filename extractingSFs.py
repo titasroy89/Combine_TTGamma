@@ -23,7 +23,8 @@ measured_stderr =array('d')
 print seed
 #for scale in val:
    # expected_.append(scale)
-command = "combine -M FitDiagnostics -t 1000 --skipBOnlyFit --trackParameters r,TTbar_norm,Hadronic_norm,VGamma_norm,Others_norm,SingleTop_norm,VJets_norm,lumi -s %i --robustFit 1 --plots --expectSignal=%.2f %s"%(seed, scale, datacard)
+#command = "combine -M FitDiagnostics -t 1000 --skipBOnlyFit --trackParameters r,TTbar_norm,Hadronic_norm,VGamma_norm,Others_norm,SingleTop_norm,VJets_norm,lumi,Pileup,BTagSF,MuEff,PhoEff,phosmear,phoscale,JECTotal,Q2,JER,Pdf -s %i --robustFit 1 --plots --expectSignal=%.2f %s"%(seed, scale, datacard)
+command = "combine -M FitDiagnostics --skipBOnlyFit --trackParameters r,Hadronic_norm,VGamma_norm --robustFit 1 --plots --saveShapes --saveNormalizations datacard_Syst_ele_data.txt"
 print command
 p = subprocess.Popen(command,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 f = p.communicate()
@@ -33,7 +34,7 @@ _file = TFile("higgsCombineTest.FitDiagnostics.mH120.%i.root"%seed,"read")
 h = TH1F("h","h",11000,-1,10)
 _tree = _file.Get("limit")
 
-for fitParam in ["r","TTbar_norm","VGamma_norm","Others_norm","SingleTop_norm","VJets_norm","lumi","Hadronic_norm"]:
+for fitParam in ["r","TTbar_norm","VGamma_norm","Others_norm","SingleTop_norm","VJets_norm","lumi","Hadronic_norm", "Pileup","BTagSF","MuEff","PhoEff","phosmear","phoscale","JECTotal","Q2","JER","Pdf"]:
 
 	_tree.Draw("trackedParam_%s>>h"%fitParam,"quantileExpected==-1")
 	h.Draw()
@@ -49,6 +50,6 @@ for fitParam in ["r","TTbar_norm","VGamma_norm","Others_norm","SingleTop_norm","
 
 #p = subprocess.Popen("rm higgsCombineTest.FitDiagnostics.mH120.%i.root"%seed,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 #f = p.communicate()
-print "Signal_Strength\tTTbar_norm\tVGamma_norm\tOthers_norm,SingleTop_norm,VJets_norm,lumi,Hadronic_norm"
-print "%.2f+/-%.2f\t%.2f+/-%.2f\t%.2f+/-%.2f\t%.2f+/-%.2f\t%.2f+/-%.2f\t%.2f+/-%.2f\t%.2f+/-%.2f"%(measured_[0],measured_stderr[0],measured_[1],measured_stderr[1],measured_[2],measured_stderr[2],measured_[3],measured_stderr[3],measured_[4],measured_stderr[4],measured_[5],measured_stderr[5],measured_[6],measured_stderr[6],measured_[7],measured_stderr[7])#,measured_[8],measured_stderr[8],measured_[9],measured_stderr[9],measured_[10],measured_stderr[10],measured_[11],measured_stderr[11],measured_[12],measured_stderr[12])
+print "Signal_Strength\tTTbar_norm\tVGamma_norm\tOthers_norm\tSingleTop_norm\tVJets_norm\tlumi\tHadronic_norm\tPileup\tBTagSF\tMuEff\tPhoEff\tphosmear\tphoscale\tJECTotal\tQ2\tJER\tPdf"
+print "%.2f+/-%.2f\t%.2f+/-%.2f\t%.2f+/-%.2f\t%.2f+/-%.2f\t%.2f+/-%.2f\t%.2f+/-%.2f\t%.2f+/-%.2f"%(measured_[0],measured_stderr[0],measured_[1],measured_stderr[1],measured_[2],measured_stderr[2],measured_[3],measured_stderr[3],measured_[4],measured_stderr[4],measured_[5],measured_stderr[5],measured_[6],measured_stderr[6],measured_[7],measured_stderr[7],measured_[8],measured_stderr[8],measured_[9],measured_stderr[9],measured_[10],measured_stderr[10],measured_[11],measured_stderr[11],measured_[12],measured_stderr[12],measured_[13],measured_stderr[13],measured_[14],measured_stderr[14],measured_[15],measured_stderr[15],measured_[16],measured_stderr[16],measured_[17],measured_stderr[17])
 
