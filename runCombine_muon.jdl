@@ -1,0 +1,22 @@
+universe = vanilla
+Executable = runCombine_muon.sh 
+
+
+should_transfer_files = YES
+WhenTOTransferOutput  = ON_EXIT
+notification = never
+Transfer_Input_Files = Combine_withDDTemplateData_v6_mu_tight_binned_PDF.root, datacard_muons.txt,runImpactToys.py,parameterNames.json
+
+
+Output = condor/mu_$(cluster)_$(process).stdout
+Error  = condor/mu_$(cluster)_$(process).stderr
+Log    = condor/mu_$(cluster)_$(process).condor
+
+Requirements          = (OpSys == "LINUX" && (Arch != "DUMMY"))
+#use_x509userproxy = true
+x509userproxy = $ENV(X509_USER_PROXY)
+# important, number of instances (jobs) of script
+
+Arguments = "$(process)"
+Queue 100
+
