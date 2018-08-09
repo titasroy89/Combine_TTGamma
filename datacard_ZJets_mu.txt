@@ -4,16 +4,16 @@ kmax *  number of nuisance parameters
 
 
 
-shapes * * Combine_ZJets_ele_e3jets1tag.root $CHANNEL/$PROCESS/nominal 
+shapes * * Combine_ZJets_mu_tight0b.root $CHANNEL/$PROCESS/nominal 
 
-bin            MisIDEle
+bin            dilepmass
 observation     -1               
 
-bin                      MisIDEle       MisIDEle   
+bin                      dilepmass       dilepmass   
 process                  signal          bkg 
 process                  0                1            
 rate                    -1               -1      
 ---------------------------------------------------------------------------------------------------------------
 
 bkg_norm rateParam *  bkg  1
-
+#bkg_norm param 1.0 0.3
